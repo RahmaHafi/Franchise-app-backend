@@ -1,5 +1,15 @@
 
+const { find } = require('../models/Franchise')
 const Franchise= require('../models/Franchise')
+
+const getAllFranchise=async(req,res)=>{
+    try {
+        const franchises= await Franchise.find()
+        res.status(200).json(franchises)
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}
 
 const createFranchise = async (req, res) => {  
       
@@ -18,5 +28,6 @@ const createFranchise = async (req, res) => {
 }
 
 module.exports={
+    getAllFranchise,
     createFranchise
 }
