@@ -3,6 +3,10 @@ const { Schema, model } = require('mongoose')
 
 const franchiseSchema = new Schema({
     basicFranchiseInfo: {
+        franchiseLogoUrl:{
+            type: String,
+            required : true
+        }, 
         franchiseName: {
             type: String,
             required : true
