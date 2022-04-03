@@ -5,6 +5,7 @@ const cors= require('cors');
 
 
 const franchiseRuter=require('./routes/franchises');
+const userRouter= require('./routes/users')
 
 
 
@@ -19,6 +20,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/franchise',franchiseRuter)
+app.use('/auth', userRouter)
 
 
 
