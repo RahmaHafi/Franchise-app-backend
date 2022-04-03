@@ -1,11 +1,14 @@
 const bcrypt = require('bcrypt')
 
 const User = require('../models/User')
-
+const {registerValidator}= require('../utilities/validators')
 
 const registerUser= async(req,res)=>{
     try {
-
+        const validationResult = registerValidator.validate(req.body,{abortEarly:false})
+        if(validationResult .error){
+            return res.status(400).json(validationResult)
+        }
         const {email,password} = req.body
 
         const existingUser = await User.findOne({email})
