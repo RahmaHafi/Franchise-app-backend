@@ -21,7 +21,7 @@ const createFranchise = async (req, res) => {
         return res.json(validationResult)
     }
     try {
-        const franchise = new Franchise(reqBody)
+        const franchise = new Franchise({...reqBody, user : req.user._id})
         const savedFranchise = await franchise.save()
         res.status(201).json({
             message: 'Item created successfully',
@@ -39,7 +39,7 @@ const updateFranchise= async(req,res)=>{
     }
     const {id}= req.params
     try {
-        const franchiseToUpdate= await Franchise.findByIdAndUpdate({_id:id},{$set: reqBody},{new: true})
+        const franchiseToUpdate= await Franchise.findOneAndUpdate({_id:id, user:req.user._id},{$set: reqBody},{new: true})
         if (!franchiseToUpdate){
             return res.status(404).json({error: "Franchise not found"})
         }
@@ -54,13 +54,12 @@ const updateFranchise= async(req,res)=>{
 const deleteFranchise= async(req,res)=>{
     const {id}= req.params
     try {
-        const franchiseToDelete= await Franchise.findByIdAndDelete({_id:id})
+        const franchiseToDelete= await Franchise.findOneAndDelete({_id:id,user:req.user._id})
         if (!franchiseToDelete){
             return res.status(404).json({error: "Franchise not found"})
         }
         return res.json({
-            message: "Franchise deleted successfully",
-           
+            message: "Franchise deleted successfully",  
         })
     } catch (error) {
         return res.status(500).json({error: error.message})

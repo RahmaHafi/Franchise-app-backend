@@ -1,13 +1,13 @@
 const express = require('express')
 const {createFranchise, getAllFranchise, updateFranchise, deleteFranchise, getSinglfranchise} = require('../controllers/franchises')
-
+const checkAuth =require('../middlewares/check-auth')
 
 const router= express.Router()
 
 router.get('/', getAllFranchise)
-router.post('/', createFranchise)
-router.put('/:id', updateFranchise)
-router.delete('/:id', deleteFranchise)
+router.post('/',checkAuth,createFranchise)
+router.put('/:id',checkAuth, updateFranchise)
+router.delete('/:id',checkAuth, deleteFranchise)
 router.get('/:id', getSinglfranchise)
 
 

@@ -57,6 +57,10 @@ const franchiseSchema = new Schema({
         indirectRoyalties:Number,
         otherBonds:String,
         offeredTrainingDuration:Number
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref:'User'
     }
 })
 
