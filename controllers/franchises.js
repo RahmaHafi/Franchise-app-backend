@@ -1,8 +1,10 @@
 
 
 const Franchise= require('../models/Franchise')
+const {franchiseValidator,updateFranchiseValidator} = require('../utilities/validators')
 
 const getAllFranchise=async(req,res)=>{
+    
     try {
         const franchises= await Franchise.find()
         res.status(200).json(franchises)
@@ -14,7 +16,10 @@ const getAllFranchise=async(req,res)=>{
 const createFranchise = async (req, res) => {  
       
     const reqBody = req.body
-   
+    const validationResult = franchiseValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     try {
         const franchise = new Franchise(reqBody)
         const savedFranchise = await franchise.save()
@@ -28,6 +33,10 @@ const createFranchise = async (req, res) => {
 }
 const updateFranchise= async(req,res)=>{
     const reqBody= req.body
+    const validationResult = updateFranchiseValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     const {id}= req.params
     try {
         const franchiseToUpdate= await Franchise.findByIdAndUpdate({_id:id},{$set: reqBody},{new: true})
