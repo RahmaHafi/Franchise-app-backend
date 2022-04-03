@@ -4,7 +4,7 @@ const mongoose= require('mongoose');
 const cors= require('cors');
 
 
-const franchiseRuter=require('./routes/franchises');
+const franchiseRouter=require('./routes/franchises');
 const userRouter= require('./routes/users')
 
 
@@ -19,7 +19,7 @@ app.get('/',(req,res)=>{
     return res.json({ message : "Hello from the server"})
 })
 
-app.use('/franchise',franchiseRuter)
+app.use('/franchises',franchiseRouter)
 app.use('/auth', userRouter)
 
 
