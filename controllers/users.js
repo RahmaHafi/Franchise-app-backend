@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
 
         const token = await jwt.sign({userId: user._id},process.env.JWT_SECRET)
         res.json({
-            message: `Welcome to Tuni-Franchise-App dear ${user.role}`,
+            message: `Welcome to Tuni-Franchise-App dear ${user.roles[0]}`,
             user,
             token
         })

@@ -6,7 +6,7 @@ const userSchema = new Schema({
         required: true
     },
     lastName:String,
-    role:{
+    roles:{
         type:[String],
         required:true
     },
