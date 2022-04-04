@@ -24,7 +24,7 @@ const createFranchise = async (req, res) => {
         const franchise = new Franchise({...reqBody, user : req.user._id})
         const savedFranchise = await franchise.save()
         res.status(201).json({
-            message: 'Item created successfully',
+            message: 'Franchise created successfully',
             franchise: savedFranchise
         })
     } catch (error) {

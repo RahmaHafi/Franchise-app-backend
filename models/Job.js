@@ -2,7 +2,7 @@ const {Schema,model} = require('mongoose')
 
 
 const jobSchema = new Schema({
-    
+
     jobTitle:{
         type:String,
         required:true
@@ -33,6 +33,10 @@ const jobSchema = new Schema({
     requiredSkills :{
         type:String,
         required:true
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref:'User'
     }
 })
 
