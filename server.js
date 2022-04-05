@@ -7,6 +7,7 @@ const cors= require('cors');
 const franchisesRouter=require('./routes/franchises');
 const usersRouter= require('./routes/users')
 const jobsRouter = require('./routes/jobs')
+const messagesRouter = require('./routes/messages')
 
 
 
@@ -23,6 +24,7 @@ app.get('/',(req,res)=>{
 app.use('/franchises',franchisesRouter)
 app.use('/auth', usersRouter)
 app.use('/jobs', jobsRouter)
+app.use('/messages', messagesRouter)
 
 
 

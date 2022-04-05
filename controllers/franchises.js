@@ -6,7 +6,7 @@ const {franchiseValidator,updateFranchiseValidator} = require('../utilities/vali
 const getAllFranchise=async(req,res)=>{
     
     try {
-        const franchises= await Franchise.find()
+        const franchises= await Franchise.find().populate('user')
         res.status(200).json(franchises)
     } catch (error) {
         res.status(500).json({ error: error.message })
