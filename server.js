@@ -8,6 +8,7 @@ const franchisesRouter=require('./routes/franchises');
 const usersRouter= require('./routes/users')
 const jobsRouter = require('./routes/jobs')
 const messagesRouter = require('./routes/messages')
+const expertsRouter = require('./routes/experts')
 
 
 
@@ -25,6 +26,7 @@ app.use('/franchises',franchisesRouter)
 app.use('/auth', usersRouter)
 app.use('/jobs', jobsRouter)
 app.use('/messages', messagesRouter)
+app.use('/experts',expertsRouter)
 
 
 
