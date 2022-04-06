@@ -1,6 +1,9 @@
 
 const Job= require('../models/Job')
 
+const {jobValidator,jobUpdateValidator} = require('../utilities/validators')
+
+
 const getAllJobs = async(req,res)=>{
     
     try {
@@ -13,6 +16,10 @@ const getAllJobs = async(req,res)=>{
 
 const createJob = async (req, res) => {  
       const reqBody =  req.body
+      const validationResult = jobValidator.validate(reqBody,{ abortEarly: false})
+      if (validationResult.error) {
+          return res.json(validationResult)
+      }
     try {
         const job= new Job({...reqBody, user : req.user._id})
         const savedJob = await job.save()
@@ -28,6 +35,10 @@ const createJob = async (req, res) => {
 const updateJob= async(req,res)=>{
     const reqBody= req.body
     const {id}= req.params
+    const validationResult = jobUpdateValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     try {
         const jobToUpdate= await Job.findOneAndUpdate({_id:id, user:req.user._id},{$set: reqBody},{new: true})
         if (!jobToUpdate){

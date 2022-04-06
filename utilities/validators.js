@@ -110,6 +110,31 @@ const expertUpdateValidator = Joi.object({
     description:Joi.string().min(2)
 }) 
 
+const jobValidator = Joi.object({
+    jobTitle:Joi.string().min(2).required(),
+    publishedOn : Joi.string(),
+    company:Joi.string().min(2).required(),
+    city:Joi.string().min(2).required(),
+    postalCode :Joi.number(),
+    contact :Joi.string().min(2).required(),
+    email :Joi.string().email().required(),
+    experience :Joi.string(),
+    description :Joi.string().min(2).required(),
+    requiredSkills :Joi.string().min(2).required()
+})
+const jobUpdateValidator = Joi.object({
+    jobTitle:Joi.string().min(2).required(),
+    publishedOn : Joi.string(),
+    company:Joi.string().min(2).required(),
+    city:Joi.string().min(2).required(),
+    postalCode :Joi.number(),
+    contact :Joi.string().min(2).required(),
+    email :Joi.string().email().required(),
+    experience :Joi.string(),
+    description :Joi.string().min(2).required(),
+    requiredSkills :Joi.string().min(2).required()
+})
+
 
 
 module.exports = {
@@ -118,5 +143,7 @@ module.exports = {
     registerValidator,
     loginValidator,
     expertValidator,
-    expertUpdateValidator
+    expertUpdateValidator,
+    jobValidator ,
+    jobUpdateValidator
 }
