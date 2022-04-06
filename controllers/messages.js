@@ -1,9 +1,15 @@
 
 const Franchise = require('../models/Franchise')
 const Message = require('../models/Message')
+const {messageValidator} = require('../utilities/validators')
+
 
 const sendMessage = async (req, res) => {
     const reqBody = req.body
+    const validationResult = messageValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     let author = null
     if (req.user) {
         author = req.user._id

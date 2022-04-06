@@ -135,6 +135,16 @@ const jobUpdateValidator = Joi.object({
     requiredSkills :Joi.string().min(2).required()
 })
 
+const messageValidator = Joi.object({
+    firstName: Joi.string().min(2).required(),
+    lastName: Joi.string(),
+    email:Joi.string().email().required(),
+    phoneNumber: Joi.number().required(),
+    subject: Joi.string().min(2).required(),
+    content:Joi.string().min(2).required(),
+    franchise: Joi.string().required()
+})
+
 
 
 module.exports = {
@@ -144,6 +154,7 @@ module.exports = {
     loginValidator,
     expertValidator,
     expertUpdateValidator,
-    jobValidator ,
-    jobUpdateValidator
+    jobValidator,
+    jobUpdateValidator,
+    messageValidator
 }
