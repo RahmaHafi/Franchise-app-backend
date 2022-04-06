@@ -87,11 +87,36 @@ const loginValidator = Joi.object({
     password:Joi.string().required()
 })
 
+const expertValidator = Joi.object({
+    fullName:Joi.string().min(2).max(70).required(),
+    adress:Joi.string(),
+    phone:Joi.number().required(),
+    email:Joi.string().email().required(),
+    webSite:Joi.string(),
+    activities:Joi.string(),
+    title:Joi.string().min(2).max(70).required(),
+    structureOfTheOffice: Joi.string(),
+    description:Joi.string().min(2).required()
+}) 
+const expertUpdateValidator = Joi.object({
+    fullName:Joi.string().min(2).max(70),
+    adress:Joi.string(),
+    phone:Joi.number(),
+    email:Joi.string().email(),
+    webSite:Joi.string(),
+    activities:Joi.string(),
+    title:Joi.string().min(2).max(70),
+    structureOfTheOffice: Joi.string(),
+    description:Joi.string().min(2)
+}) 
+
 
 
 module.exports = {
     franchiseValidator,
     updateFranchiseValidator,
     registerValidator,
-    loginValidator
+    loginValidator,
+    expertValidator,
+    expertUpdateValidator
 }

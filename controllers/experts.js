@@ -1,4 +1,6 @@
 const Expert = require('../models/Expert')
+const {expertValidator,expertUpdateValidator} = require('../utilities/validators')
+
 
 const getAllExperts =async(req,res)=>{
     
@@ -13,6 +15,10 @@ const getAllExperts =async(req,res)=>{
 const createExpert = async (req, res) => {  
       
     const reqBody = req.body
+    const validationResult = expertValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     try {
         const expert = new Expert({...reqBody, user : req.user._id})
         const savedExpert = await expert.save()
@@ -28,6 +34,10 @@ const createExpert = async (req, res) => {
 const updateExpert= async(req,res)=>{
     const reqBody= req.body
     const {id}= req.params
+    const validationResult = expertUpdateValidator.validate(reqBody,{ abortEarly: false})
+    if (validationResult.error) {
+        return res.json(validationResult)
+    }
     try {
         const expertToUpdate= await Expert.findOneAndUpdate({_id:id, user:req.user._id},{$set: reqBody},{new: true})
         if (!expertToUpdate){
