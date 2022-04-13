@@ -4,7 +4,7 @@ const franchiseValidator = Joi.object({
     basicFranchiseInfo: {
         franchiseLogoUrl: Joi.string().min(2).max(70).required(),
         franchiseName: Joi.string().min(2).max(70).required(),
-        Sector: Joi.string().required(),
+        sector: Joi.string().required(),
         yearOfCreation: Joi.number(),
         numberOfUnities: Joi.number()
     },
@@ -41,7 +41,7 @@ const updateFranchiseValidator = Joi.object({
     basicFranchiseInfo: {
         franchiseLogoUrl: Joi.string().min(2).max(70),
         franchiseName: Joi.string().min(2).max(70),
-        Sector: Joi.string(),
+        sector: Joi.string(),
         yearOfCreation: Joi.number(),
         numberOfUnities: Joi.number()
     },
@@ -78,7 +78,7 @@ const updateFranchiseValidator = Joi.object({
 const registerValidator = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
-    role: Joi.alternatives().try(Joi.array().items(Joi.string()), Joi.string()).required(),
+    roles: Joi.alternatives().try(Joi.array().items(Joi.string()), Joi.string()).required(),
     email: Joi.string().email().required(),
     password: Joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/).required(),
 })

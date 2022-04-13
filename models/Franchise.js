@@ -11,7 +11,7 @@ const franchiseSchema = new Schema({
             type: String,
             required : true
         },
-        Sector: {
+        sector: {
             type: String,
             required: true
         },

@@ -9,11 +9,10 @@
   },
   "keywords": [
     "nodejs",
-    "-",
     "express",
     "server",
-    "-",
-    "mongoose"
+    "mongoose",
+    "rest api"
   ],
   "author": "Rahma Hafi",
   "license": "MIT",
