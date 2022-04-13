@@ -18,7 +18,7 @@ const createFranchise = async (req, res) => {
     const reqBody = req.body
     const validationResult = franchiseValidator.validate(reqBody,{ abortEarly: false})
     if (validationResult.error) {
-        return res.json(validationResult)
+        return res.status(401).json(validationResult)
     }
     try {
         const franchise = new Franchise({...reqBody, user : req.user._id})
