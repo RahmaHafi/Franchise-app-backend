@@ -73,7 +73,7 @@ const getSinglfranchise= async(req,res)=>{
         if (!franchiseToGet){
             return res.status(404).json({error: "Franchise not found"})
         }
-        return res.json({franchiseToGet})
+        return res.json(franchiseToGet)
     } catch (error) {
         return res.status(500).json({error: error.message})
     }

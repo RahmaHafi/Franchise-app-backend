@@ -2,11 +2,12 @@ const Joi = require('joi')
 
 const franchiseValidator = Joi.object({
     basicFranchiseInfo: {
-        franchiseLogoUrl: Joi.string().min(2).max(70).required(),
+        franchiseLogoUrl: Joi.string().min(2).required(),
         franchiseName: Joi.string().min(2).max(70).required(),
         sector: Joi.string().required(),
         yearOfCreation: Joi.number(),
         numberOfUnities: Joi.number()
+        
     },
     contactDetails: {
         adress: Joi.string().min(2).max(70),
@@ -15,7 +16,7 @@ const franchiseValidator = Joi.object({
         email: Joi.string().email().required(),
         webSiteUrl: Joi.string().required(),
         capital: Joi.string(),
-        commercialRegister: Joi.string(),
+        commercialRegister:Joi.string(),
         yearOfCreationOfTheNetwork: Joi.number()
     },
     typicalFranchisee: {
@@ -51,7 +52,7 @@ const updateFranchiseValidator = Joi.object({
         phone: Joi.number(),
         email: Joi.string().email(),
         webSiteUrl: Joi.string(),
-        capital: Joi.string(),
+        capital: Joi.number(),
         commercialRegister: Joi.string(),
         yearOfCreationOfTheNetwork: Joi.number()
     },

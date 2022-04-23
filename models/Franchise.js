@@ -37,7 +37,7 @@ const franchiseSchema = new Schema({
             required : true
         },
         capital: Number,
-        commercialRegister: String,
+        commercialRegister:String,
         yearOfCreationOfTheNetwork: Number
     },
     typicalFranchisee: {
